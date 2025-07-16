@@ -1,0 +1,48 @@
+what is react js ----- it is library (group of functions) which written using js  ---- group of js functions (js)
+
+why react js ? ------ 
+
+
+1. it has predefined functions
+
+2. react js is a single page application
+
+3. easy to use
+
+4. performance
+
+5. you can directly write html and js combinedly
+
+6. for every small change it won't update the dom --- because of this virtual dom it will improve the performance
+
+---- react js won't update the dom directly, it has the virutal dom , based on the changes it will update the dom
+
+---------------------------------
+
+how to install the react js -----
+
+1. install the node js ----- 
+
+2. we have to install the react js using the npm (node package manager (playstore)) (in 2 ways)
+
+ 	a) using create-react-app
+
+	b) using vite js
+		
+		1. npm create vite@latest
+
+		2. give the y (proceed)
+
+		3. enter the project name
+
+		4. select framework (react js)
+
+		5. select variant (javascript)
+		
+		6. cd your project name
+
+		7. npm i (to install the react js) --- after this you can find the node_modules (where react folder installed)
+
+		8. npm run dev (to start the website in the browser)
+
+ 
