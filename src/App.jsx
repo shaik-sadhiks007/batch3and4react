@@ -1,3 +1,6 @@
+import Login from './signup/Login'
+import Register from './signup/Register'
+import Newfile from './Newfile';
 
 
 function App() {
@@ -5,7 +8,14 @@ function App() {
 
   // javascript code written in the above of the return keyword
 
-  let username = 'sadhik';
+  let count = 0;
+
+  console.log(count, 'count')
+
+
+  function increment() {
+    console.log('increment function')
+  }
 
 
 
@@ -16,11 +26,35 @@ function App() {
 
       {/* empty tags called as react fragment */}
 
-      <h1>Hello world</h1>
+      <h1>code from app.jsx</h1>
 
-      <h2>how are you ?</h2>
+      <h1>
+        Count is {count}
+      </h1>
 
-      <p> {username} is a good boy</p>
+
+      {/* <button onClick={increment}>
+        increment
+      </button> */}
+
+      <button onClick={() => increment()}>
+        increment
+      </button>
+
+      <button onClick={increment()}>
+        increment
+      </button>
+
+
+
+      {/* <Newfile />
+
+      <Register /> */}
+
+      {/*  <Login />  function call */}
+
+
+
 
 
     </div>

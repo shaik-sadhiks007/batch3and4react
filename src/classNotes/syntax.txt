@@ -1,0 +1,17 @@
+
+
+// syntax
+
+import functionName from 'path'
+
+function functionName() {
+
+    return(
+        <div> hi </div>
+    )
+}
+
+export default functionName
+
+
+// while using the event
