@@ -1,0 +1,20 @@
+usestate function ---- this function when  update the variable it will update the html also
+
+
+syntax : 
+
+let count = 0 //
+
+
+count = 10 // we will update in the js
+
+const [variablename, functionname to update the variable] = usestate(initial value)
+
+
+const [count, setCount] = usestate(0)
+
+
+setCount(10) // it will automatically the update the count variable with 10
+
+
+

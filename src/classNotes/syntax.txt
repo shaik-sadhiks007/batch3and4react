@@ -14,4 +14,17 @@ function functionName() {
 export default functionName
 
 
-// while using the event
+// while using the events
+
+
+1. callback function (if u directly use the increament() like this, function not called)
+ <button onClick={() => increment()}>
+        increment
+      </button>
+
+2. without parenthesis, onclick event automatically call the function
+      <button onClick={increment}>
+        increment
+      </button>
+
+

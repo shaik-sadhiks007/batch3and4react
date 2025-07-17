@@ -1,6 +1,11 @@
 
 import React from 'react'
 
+
+export function testing() {
+    console.log('hi')
+}
+
 function Register() {
     return (
         <div>
