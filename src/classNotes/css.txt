@@ -1,0 +1,8 @@
+
+write the css in the new file
+
+
+and import the path 
+
+
+import './pathname'  ---- importing the external css
