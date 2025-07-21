@@ -1,8 +1,7 @@
+import DependencyProducts from "./Products/DependencyProducts"
 import Products from "./Products/Products"
 
 function App() {
-
-
 
   return (
 
@@ -11,8 +10,9 @@ function App() {
 
       <Products />
 
+      {/* <DependencyProducts/> */}
+      
     </div>
-
 
   )
 

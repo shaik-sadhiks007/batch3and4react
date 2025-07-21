@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 function Products() {
 
     const [products, setProducts] = useState([]); // use empty because products are array of objs
-
 
     async function fetchProducts() {
 
@@ -11,14 +10,47 @@ function Products() {
 
         let data = await response.json(); // file into js obj
 
+
+        console.log(data, 'data')
+
         setProducts(data.products);
 
         // console.log(data.products, 'data')
     }
 
+
+
+
+    // syntax of the useEffect :
+
+    // useEffect(  Callback, dependency   )
+
+    // dependency --- [] ---- empty dependency ---- it will call the function only one time that too on the load of the page
+
+
+    // useeffect ---- is called to handle the side effects (majorly async function)
+
+    // note : when we are doing the api calls use the useEffect function
+
+    // 2. when u add the dependency --- when the variable changes the useeffect automatically call the inner functions in the useeffect
+
+
+    
+
+
+    useEffect(
+
+        () => {
+
+            fetchProducts()
+
+        }, []
+
+    )
+
     console.log(products, 'products')
 
-    fetchProducts()
+    // fetchProducts()
 
     return (
         <div>
@@ -33,13 +65,14 @@ function Products() {
 
                 <div className='row'>
                     {
+                        // key property should be unique it is identify the child for the react js
                         products.map((ele, index) => (
-                            <div class="card col-12 col-sm-6 col-md-4 col-lg-3" >
-                                <img src={ele.images[0]} class="card-img-top" alt="..." />
-                                <div class="card-body">
-                                    <h5 class="card-title">{ele.title}</h5>
-                                    <p class="card-text">{ele.description}</p>
-                                    <a href="#" class="btn btn-primary">Add to Cart</a>
+                            <div className="card col-12 col-sm-6 col-md-4 col-lg-3" key={index}>
+                                <img src={ele.images[0]} className="card-img-top" alt="..." />
+                                <div className="card-body">
+                                    <h5 className="card-title">{ele.title}</h5>
+                                    <p className="card-text">{ele.description}</p>
+                                    <a href="#" className="btn btn-primary">Add to Cart</a>
                                 </div>
                             </div>
                         ))
