@@ -1,0 +1,26 @@
+
+navigation in the react js will be handled by one package called react-router-dom
+
+by default vite js won't install this, we have to install this package 
+
+to use the react-router-dom for the navigation
+
+
+we have to call the three function in the html those are browserrouter, routes, route from the react-router-dom
+
+
+we will call this three functions to implement the indexing (like book)
+
+
+we are doing the navigation between the components (not like js , in the js ,
+ we have the multiple htmls, and we use the anchor tag to switch b/w them)
+
+without having the multiple htmls we are doing the navigation by components
+
+
+
+note : 
+
+For nagivation terms used ----- for indexing like book front page ( BrowserRouter,Routes,Route)  ,
+
+ to navigate that page we have to use Link tag

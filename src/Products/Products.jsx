@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Header from '../components/Header';
 
 function Products() {
 
@@ -18,9 +19,6 @@ function Products() {
         // console.log(data.products, 'data')
     }
 
-
-
-
     // syntax of the useEffect :
 
     // useEffect(  Callback, dependency   )
@@ -33,9 +31,6 @@ function Products() {
     // note : when we are doing the api calls use the useEffect function
 
     // 2. when u add the dependency --- when the variable changes the useeffect automatically call the inner functions in the useeffect
-
-
-    
 
 
     useEffect(
@@ -54,6 +49,7 @@ function Products() {
 
     return (
         <div>
+
             <h1>products page</h1>
 
 
