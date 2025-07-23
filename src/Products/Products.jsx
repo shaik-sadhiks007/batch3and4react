@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Header from '../components/Header';
+import { Link } from 'react-router-dom';
 
 function Products() {
 
@@ -59,6 +60,7 @@ function Products() {
 
             <div className='container'>
 
+
                 <div className='row'>
                     {
                         // key property should be unique it is identify the child for the react js
@@ -66,7 +68,11 @@ function Products() {
                             <div className="card col-12 col-sm-6 col-md-4 col-lg-3" key={index}>
                                 <img src={ele.images[0]} className="card-img-top" alt="..." />
                                 <div className="card-body">
-                                    <h5 className="card-title">{ele.title}</h5>
+
+                                    <Link to={`/product/${ele.id}`}>
+                                        <h5 className="card-title">{ele.title}</h5>
+                                    </Link>
+
                                     <p className="card-text">{ele.description}</p>
                                     <a href="#" className="btn btn-primary">Add to Cart</a>
                                 </div>

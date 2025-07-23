@@ -10,6 +10,7 @@ function Header() {
 
                 <li>
 
+                    {/* link tag is similar to anthor tag , but link tag is inpage navigation */}
                     <Link to='/'>
                         home page
                     </Link>
