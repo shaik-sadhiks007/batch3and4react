@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Header from '../components/Header';
 import { Link } from 'react-router-dom';
+import ProductCategory from './ProductCategory';
 
 function Products() {
 
@@ -20,6 +21,47 @@ function Products() {
         // console.log(data.products, 'data')
     }
 
+
+    const [categories, setCategories] = useState([])
+
+    const [selectedCategory, setSelectedCategory] = useState("beauty")
+
+
+    const [filteredProducts, setFilteredProducts] = useState(products)
+
+    async function fetchCategory() {
+
+        let res = await fetch('https://dummyjson.com/products/category-list');
+
+        let data = await res.json()
+
+        setCategories(data.slice(0, 5))
+    }
+
+
+    function filterProducts() {
+
+        console.log("function fillter")
+
+        let filteredData = products.filter((ele, index) => ele.category === selectedCategory)
+
+        console.log(filteredData,'filtereddata')
+
+    }
+
+    useEffect(() => {
+
+        filterProducts()
+
+
+    }, [products, selectedCategory])
+
+    useEffect(() => {
+        fetchCategory()
+
+        fetchProducts()
+    }, [])
+
     // syntax of the useEffect :
 
     // useEffect(  Callback, dependency   )
@@ -33,20 +75,17 @@ function Products() {
 
     // 2. when u add the dependency --- when the variable changes the useeffect automatically call the inner functions in the useeffect
 
-
-    useEffect(
-
-        () => {
-
-            fetchProducts()
-
-        }, []
-
-    )
-
     console.log(products, 'products')
 
     // fetchProducts()
+
+
+    function handleSelectedCategory(cat) {
+        setSelectedCategory(cat)
+    }
+
+    console.log(selectedCategory, 'selected cat')
+
 
     return (
         <div>
@@ -58,6 +97,32 @@ function Products() {
 
             when we are using the html --- we have to use the () */}
 
+
+            <div>
+                <h1>categories of the products</h1>
+
+                <button className='btn btn-outline-danger mx-2 mb-3'
+
+                    onClick={() => handleSelectedCategory('all')}
+
+                >
+                    All
+                </button>
+
+                {
+                    categories.map((ele, index) => (
+
+                        <button key={index} className='btn btn-outline-danger mx-2 mb-3'
+
+                            onClick={() => handleSelectedCategory(ele)}
+
+                        >
+                            {ele}
+                        </button>
+
+                    ))
+                }
+            </div>
             <div className='container'>
 
 
