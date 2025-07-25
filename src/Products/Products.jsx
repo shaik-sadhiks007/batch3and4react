@@ -7,6 +7,13 @@ function Products() {
 
     const [products, setProducts] = useState([]); // use empty because products are array of objs
 
+    const [selectedCat, setSelectedCat] = useState('all');
+
+    const [filteredData, setFilteredData] = useState([])
+
+
+    console.log(filteredData, 'filtereddata')
+
     async function fetchProducts() {
 
         let response = await fetch("https://dummyjson.com/products");
@@ -14,7 +21,7 @@ function Products() {
         let data = await response.json(); // file into js obj
 
 
-        console.log(data, 'data')
+        // console.log(data, 'data')
 
         setProducts(data.products);
 
@@ -22,42 +29,36 @@ function Products() {
     }
 
 
-    const [categories, setCategories] = useState([])
-
-    const [selectedCategory, setSelectedCategory] = useState("beauty")
-
-
-    const [filteredProducts, setFilteredProducts] = useState(products)
-
-    async function fetchCategory() {
-
-        let res = await fetch('https://dummyjson.com/products/category-list');
-
-        let data = await res.json()
-
-        setCategories(data.slice(0, 5))
-    }
-
-
-    function filterProducts() {
-
-        console.log("function fillter")
-
-        let filteredData = products.filter((ele, index) => ele.category === selectedCategory)
-
-        console.log(filteredData,'filtereddata')
+    function handleCategory(clickedCategory) {
+        setSelectedCat(clickedCategory)
 
     }
 
     useEffect(() => {
 
-        filterProducts()
+        filteringProducts()
+
+    }, [products, selectedCat])
 
 
-    }, [products, selectedCategory])
+    function filteringProducts() {
+
+
+        if (selectedCat === 'all') {
+            setFilteredData(products)
+        } else {
+            let data = products.filter((ele, index) => ele.category === selectedCat)
+            setFilteredData(data)
+        }
+
+
+
+    }
+
+    console.log(selectedCat, 'categr')
+
 
     useEffect(() => {
-        fetchCategory()
 
         fetchProducts()
     }, [])
@@ -75,16 +76,10 @@ function Products() {
 
     // 2. when u add the dependency --- when the variable changes the useeffect automatically call the inner functions in the useeffect
 
-    console.log(products, 'products')
+    // console.log(products, 'products')
 
     // fetchProducts()
 
-
-    function handleSelectedCategory(cat) {
-        setSelectedCategory(cat)
-    }
-
-    console.log(selectedCategory, 'selected cat')
 
 
     return (
@@ -101,27 +96,37 @@ function Products() {
             <div>
                 <h1>categories of the products</h1>
 
-                <button className='btn btn-outline-danger mx-2 mb-3'
+                <button className='btn btn-outline-danger'
 
-                    onClick={() => handleSelectedCategory('all')}
+                    onClick={() => handleCategory("all")}
 
                 >
                     All
                 </button>
 
-                {
-                    categories.map((ele, index) => (
+                <button className='btn btn-outline-danger'
 
-                        <button key={index} className='btn btn-outline-danger mx-2 mb-3'
+                    onClick={() => handleCategory("beauty")}
 
-                            onClick={() => handleSelectedCategory(ele)}
+                >
+                    beauty
+                </button>
 
-                        >
-                            {ele}
-                        </button>
+                <button className='btn btn-outline-danger'
+                    onClick={() => handleCategory("fragrances")}
 
-                    ))
-                }
+
+                >
+                    fragrances
+                </button>
+
+                <button className='btn btn-outline-danger'
+                    onClick={() => handleCategory("furniture")}
+
+                >
+                    furniture
+                </button>
+
             </div>
             <div className='container'>
 
@@ -129,8 +134,8 @@ function Products() {
                 <div className='row'>
                     {
                         // key property should be unique it is identify the child for the react js
-                        products.map((ele, index) => (
-                            <div className="card col-12 col-sm-6 col-md-4 col-lg-3" key={index}>
+                        filteredData.map((ele, index) => (
+                            <div className="card col-12 col-sm-6 col-md-4 col-lg-3" key={ele.id}>
                                 <img src={ele.images[0]} className="card-img-top" alt="..." />
                                 <div className="card-body">
 

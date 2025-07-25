@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Login from "./signup/Login"
 import Header from "./components/Header"
 import ProductDetail from "./Products/ProductDetail"
+import Testing from "./Products/Testing"
+
 
 function App() {
 
@@ -40,6 +42,10 @@ function App() {
 
           {/* to make it dynamic use the colon (:) */}
           <Route path="/product/:id" element={<ProductDetail />} />
+
+
+          <Route path="/testing-props" element={<Testing />} />
+
 
 
 
