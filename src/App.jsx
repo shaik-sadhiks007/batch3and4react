@@ -5,6 +5,7 @@ import Login from "./signup/Login"
 import Header from "./components/Header"
 import ProductDetail from "./Products/ProductDetail"
 import Testing from "./Products/Testing"
+import Todos from "./todosPrj/Todos"
 
 
 function App() {
@@ -45,6 +46,10 @@ function App() {
 
 
           <Route path="/testing-props" element={<Testing />} />
+
+          <Route path="/todos" element={<Todos />} />
+
+
 
 
 
