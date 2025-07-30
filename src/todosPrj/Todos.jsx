@@ -13,7 +13,11 @@ function Todos() {
 
     async function fetchTodos() {
 
-        let res = await fetch('http://localhost:5000/api/todo')
+        // by default fetch is get method
+        let res = await fetch('http://localhost:5000/api/todo',
+            {
+                method: "GET"
+            })
 
         let data = await res.json()
 
@@ -83,6 +87,33 @@ function Todos() {
 
     }
 
+
+    async function handleCheckbox(todo) {
+
+        console.log(todo,'todo')
+
+        let res = await fetch(`http://localhost:5000/api/todo/${todo._id}`,
+            {
+                // method name
+                method: "PUT",
+
+                headers: {
+                    "Content-Type" : 'application/json'
+                },
+
+                body : JSON.stringify(
+                    {
+                        completed : !todo.completed
+                    }
+                )
+            })
+
+            fetchTodos()
+    }
+
+
+    
+
     useEffect(() => {
 
         fetchTodos()
@@ -105,6 +136,8 @@ function Todos() {
                 todos={todos}
 
                 handleDelete={handleDelete}
+
+                handleCheckbox = {handleCheckbox}
 
             />
 
