@@ -65,13 +65,6 @@ function App() {
 
             <Route path="/todos" element={<Todos />} />
 
-
-
-
-
-
-
-
           </Routes>
 
         </MyAuth.Provider>

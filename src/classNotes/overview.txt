@@ -1,0 +1,75 @@
+react js summary ----
+
+
+1.usestate --- it is like the variable in the js , but to update the html content in the website we are using the usestate function instead of const a = 5 like this
+
+2. useeffect ---- async functions calls multiple times to avoid those we use the useeffect, 
+
+--- if you want to call only one time then use [] empty dependency
+
+--- if the ur function call depends on the another variable like 
+
+if the product category changes we have to call the filter function in such case use [variable] --- dependency
+
+
+3. map() ---- same like in the js but here we have to pass the key value in the first line of html, so key is used to differentiate b/w the childs , it is useful to react js , not for us
+
+ todos.map((ele, index) => (
+
+                        <li key={index}>
+
+4. usenavigate() === > 
+
+where you want to navigate based on the condition then use this
+
+usage : const navigate = useNaviage()
+
+if(true)
+{
+navigate("/login")
+}
+else {
+navigate("/register")
+}
+
+5. react-router-dom --- it is like indexing of book which says on which route what to show 
+
+  <BrowserRouter>
+
+  <Routes>
+
+            <Route path="/products" element={<Products />} />
+
+            <Route path="/" element={<Login />} />
+</Routes>
+
+
+      </BrowserRouter>
+
+6. props --- if u want to send the data from the parent to child use props
+
+// sending
+  <EachTodo
+                todos={todos}
+
+                handleDelete={handleDelete}
+
+                handleCheckbox = {handleCheckbox}
+
+                handleUpdateTitle = {handleUpdateTitle}
+
+            />
+
+
+// retrieving
+
+
+function EachTodo({ todos, handleDelete, handleCheckbox, handleUpdateTitle }) {
+
+
+7. context api ---- without having child - parent relation we can send the data
+
+
+
+
+
