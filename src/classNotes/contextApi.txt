@@ -1,0 +1,34 @@
+context api ----- is useful to send the data from one component another without parent-child relationship
+
+
+1.to avoid prop drilling ---- if we have the some more childs(levels) without using the props we have to pass them
+
+2. global state management ---
+
+3. cleaner code --- reduce lines of code
+
+
+steps to use the context api 
+
+
+1. create the context api
+
+import { createContext } from "react"
+
+export const MyAuth = createContext()
+
+
+2. use the provider in the app.jsx , and wrap it
+
+ <MyAuth.Provider value={{hemanth,setHemanth}}>
+
+
+  </MyAuth.Provider>
+
+
+3. retrive the data from the context api
+
+import { useContext } from 'react'
+import { MyAuth } from '../App'
+
+const {hemanth,setHemanth} = useContext(MyAuth)

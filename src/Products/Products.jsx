@@ -2,12 +2,18 @@ import React, { useState, useEffect } from 'react'
 import Header from '../components/Header';
 import { Link } from 'react-router-dom';
 import ProductCategory from './ProductCategory';
+import { useContext } from 'react';
+import { MyAuth } from '../App';
 
 function Products() {
 
     const [products, setProducts] = useState([]); // use empty because products are array of objs
 
     const [selectedCat, setSelectedCat] = useState('all');
+
+    const {hemanth} = useContext(MyAuth)
+
+    console.log(hemanth,'in the products')
 
     const [filteredData, setFilteredData] = useState([])
 

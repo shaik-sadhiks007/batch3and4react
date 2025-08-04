@@ -1,11 +1,17 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import { useContext } from 'react'
+import { MyAuth } from '../App'
 
 
 function Header() {
 
     let token = localStorage.getItem('token')
+
+    const {hemanth,setHemanth} = useContext(MyAuth)
+
+    console.log(hemanth,'hemanth in the header')
 
     const navigate = useNavigate()
 

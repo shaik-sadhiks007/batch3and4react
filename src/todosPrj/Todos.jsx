@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import EachTodo from './EachTodo'
 import { useNavigate } from 'react-router-dom';
-
+import { useContext } from 'react';
+import { MyAuth } from '../App';
 
 function Todos() {
 
 
     const [todos, setTodos] = useState([]);
+
+    const {hemanth} = useContext(MyAuth)
+
+
+    console.log(hemanth,'hemanth in the todos')
+
 
     const [inputText, setInputText] = useState('')
 

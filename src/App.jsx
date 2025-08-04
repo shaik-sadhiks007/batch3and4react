@@ -7,11 +7,18 @@ import ProductDetail from "./Products/ProductDetail"
 import Testing from "./Products/Testing"
 import Todos from "./todosPrj/Todos"
 import Register from './signup/Register'
+import { createContext, useState } from "react"
+
+export const MyAuth = createContext()
+
+// export const MyCart = createContext()
+
 
 
 function App() {
 
-  const a = 5
+  const [hemanth,setHemanth] = useState("testing data")
+
 
   return (
 
@@ -32,36 +39,43 @@ function App() {
       <BrowserRouter>
         {/* whatever component you want to show in the all pages we have to write it in the above of the Routes component */}
 
-        <Header />
 
-        <Routes>
+        <MyAuth.Provider value={{hemanth,setHemanth}}>
 
-          <Route path="/products" element={<Products />} />
+        
+          <Header />
 
-          <Route path="/" element={<Login />} />
+          <Routes>
 
+            <Route path="/products" element={<Products />} />
 
-          <Route path="/register" element={<Register />} />
-
-
-          {/* here id is the variable which is representing the all the dynamic pages of that product */}
-
-          {/* to make it dynamic use the colon (:) */}
-          <Route path="/product/:id" element={<ProductDetail />} />
+            <Route path="/" element={<Login />} />
 
 
-          <Route path="/testing-props" element={<Testing />} />
-
-          <Route path="/todos" element={<Todos />} />
+            <Route path="/register" element={<Register />} />
 
 
+            {/* here id is the variable which is representing the all the dynamic pages of that product */}
+
+            {/* to make it dynamic use the colon (:) */}
+            <Route path="/product/:id" element={<ProductDetail />} />
+
+
+            <Route path="/testing-props" element={<Testing />} />
+
+            <Route path="/todos" element={<Todos />} />
 
 
 
 
 
 
-        </Routes>
+
+
+          </Routes>
+
+        </MyAuth.Provider>
+
 
       </BrowserRouter>
 
