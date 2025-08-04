@@ -1,0 +1,19 @@
+what is api ?
+
+api is mediator , which is useful to make communication b/w frontend and the backend, 
+
+
+data should in the json (js obj)
+
+
+functions/methods ----- 
+
+read data ----- get method -- your are allow to see the data only not to modify
+
+create data ---- post method
+
+delete data ---- delete method
+
+update data ---- put/patch method
+
+

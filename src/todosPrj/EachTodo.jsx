@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 
-function EachTodo({ todos, handleDelete, handleCheckbox }) {
+function EachTodo({ todos, handleDelete, handleCheckbox, handleUpdateTitle }) {
 
     console.log(todos, 'in the child')
 
 
     const [showModal, setShowModal] = useState(false);
 
-    const [selectedTodo, setSelectedTodo] = useState('')
+    const [selectedTodo, setSelectedTodo] = useState('') // to save the previous title
 
-    const [selectedId, setSelectedId] = useState('')
+    const [selectedId, setSelectedId] = useState('') // to save the selected todo id
 
     function handleEdit(ele) {
 
@@ -22,9 +22,19 @@ function EachTodo({ todos, handleDelete, handleCheckbox }) {
     }
 
 
+    function handleSaveChanges() {
+
+        handleUpdateTitle(selectedId,selectedTodo)
+
+
+        setShowModal(false)
+
+
+    }
+
     console.log(selectedTodo, 'selected todo')
 
-    console.log(selectedId,'id')
+    console.log(selectedId, 'id')
 
     return (
 
@@ -55,7 +65,11 @@ function EachTodo({ todos, handleDelete, handleCheckbox }) {
                                         onClick={() => setShowModal(false)}
 
                                     >Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                    <button type="button" class="btn btn-primary"
+
+                                        onClick={() => handleSaveChanges()}
+
+                                    >Save changes</button>
                                 </div>
                             </div>
                         </div>

@@ -6,6 +6,7 @@ import Header from "./components/Header"
 import ProductDetail from "./Products/ProductDetail"
 import Testing from "./Products/Testing"
 import Todos from "./todosPrj/Todos"
+import Register from './signup/Register'
 
 
 function App() {
@@ -35,9 +36,13 @@ function App() {
 
         <Routes>
 
-          <Route path="/" element={<Products />} />
+          <Route path="/products" element={<Products />} />
 
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Login />} />
+
+
+          <Route path="/register" element={<Register />} />
+
 
           {/* here id is the variable which is representing the all the dynamic pages of that product */}
 

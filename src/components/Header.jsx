@@ -1,8 +1,32 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
 function Header() {
+
+    let token = localStorage.getItem('token')
+
+    const navigate = useNavigate()
+
+
+    useEffect(
+        () => {
+
+
+            console.log(token, 'token')
+
+        }, []
+    )
+
+
+    function handleLogout() {
+
+        localStorage.removeItem('token')
+
+        navigate('/')
+
+    }
     return (
         <nav className="navbar navbar-expand-lg bg-body-primary py-0">
             <div className="container-fluid bg-primary text-white">
@@ -27,18 +51,45 @@ function Header() {
                             <Link className="nav-link active text-white" aria-current="page" to='/todos'>Todos</Link>
                         </li>
 
+                        <li className="nav-item">
+                            <Link className="nav-link active text-white" aria-current="page" to='/products'>Products</Link>
+                        </li>
+
                     </ul>
                     <form className="d-flex" role="search">
                         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                         <button className="btn btn-success" type="submit">Search</button>
                     </form>
 
-                    <button className="btn btn-warning mx-3">
-                        <Link className="nav-link active text-white" aria-current="page" to='/login'>Login</Link>
-                    </button>
-                    <button className="btn btn-warning">
-                        <Link className="nav-link active text-white" aria-current="page" to='/register'>Register</Link>
-                    </button>
+
+                    {
+                        token == null ? (
+                            <>
+                                <button className="btn btn-warning mx-3">
+                                    <Link className="nav-link active text-white" aria-current="page" to='/login'>Login</Link>
+                                </button>
+                                <button className="btn btn-warning">
+                                    <Link className="nav-link active text-white" aria-current="page" to='/register'>Register</Link>
+                                </button>
+                            </>
+                        )
+                            :
+                            (
+                                <>
+
+                                    <button className='btn btn-warning'
+
+                                    onClick={() => handleLogout()}
+                                    
+                                    
+                                    
+                                    >
+                                        Logout
+                                    </button>
+                                </>
+                            )
+                    }
+
 
                 </div>
             </div>

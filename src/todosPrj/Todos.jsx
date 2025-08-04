@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import EachTodo from './EachTodo'
+import { useNavigate } from 'react-router-dom';
 
 
 function Todos() {
@@ -8,6 +9,23 @@ function Todos() {
     const [todos, setTodos] = useState([]);
 
     const [inputText, setInputText] = useState('')
+
+    const navigate = useNavigate()
+
+
+    useEffect(
+
+        () => {
+
+            let token = localStorage.getItem("token")
+
+            if(token == null || token == undefined) {
+
+                navigate("/")
+
+            }
+        },[]
+    )
 
 
 
@@ -112,6 +130,32 @@ function Todos() {
     }
 
 
+    async function handleUpdateTitle(TodoId,updateTitle){
+
+
+        console.log(TodoId,updateTitle,'handleupdate function')
+
+        let res = await fetch(`http://localhost:5000/api/todo/${TodoId}`,
+            {
+                method : "PUT",
+
+                headers : {
+                    "Content-Type" : "application/json"
+                },
+
+                body : JSON.stringify(
+                    {
+                        title : updateTitle
+                    }
+                )
+            }
+        )
+
+        fetchTodos()
+
+    }
+
+
     
 
     useEffect(() => {
@@ -129,6 +173,7 @@ function Todos() {
                     placeholder='enter todo'
                     value={inputText}
                     onChange={(event) => handleInputText(event)} />
+                    
                 <button className='btn btn-success' onClick={() => handleSubmit()}>submit</button>
             </div>
 
@@ -138,6 +183,8 @@ function Todos() {
                 handleDelete={handleDelete}
 
                 handleCheckbox = {handleCheckbox}
+
+                handleUpdateTitle = {handleUpdateTitle}
 
             />
 
